@@ -36,7 +36,7 @@ public class FileIOandLinearSearching {
 
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void run() throws IOException {
 
         File f = new File("file.txt");
         if (!f.exists()) {

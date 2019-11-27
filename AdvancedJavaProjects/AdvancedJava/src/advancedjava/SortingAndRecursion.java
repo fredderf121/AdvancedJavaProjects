@@ -46,7 +46,7 @@ public class SortingAndRecursion {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void run() {
         ArrayList<Integer> numList = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         System.out.println("This is a program that sorts integers");
