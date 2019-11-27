@@ -27,7 +27,9 @@ public class Initialize {
             case 3:
                 EnumAndFileIO.run();
                 break;
-            
+            case 4:
+                BonusEverything.run();
+                break;
         }
                 
         
