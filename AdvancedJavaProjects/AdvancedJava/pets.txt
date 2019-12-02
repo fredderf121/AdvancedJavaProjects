@@ -1,0 +1,6 @@
+FISH,bob,340.0,43.0
+FISH,bob,34.0,43.0
+CAT,tommy,34.0,4455643.0
+FISH,bob,34.0,43.0
+FISH,tommy,34.0,443.0
+REPTILE,jonathan,45.0,4.3

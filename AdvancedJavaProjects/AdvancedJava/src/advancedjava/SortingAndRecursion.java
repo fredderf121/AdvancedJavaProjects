@@ -44,7 +44,6 @@ public class SortingAndRecursion {
     }
 
     /**
-     * @param args the command line arguments
      */
     public static void run() {
         ArrayList<Integer> numList = new ArrayList<>();
