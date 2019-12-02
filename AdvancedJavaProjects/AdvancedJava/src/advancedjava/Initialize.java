@@ -1,19 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Serves as the portal to each problem
  */
 package advancedjava;
 import java.io.IOException;
 import java.util.Scanner;
 /**
  *
- * @author Emperor Master Chen
+ * @author Fred Chen
  */
 public class Initialize {
     
     public static void main(String[] args) throws IOException{
-        System.out.println("Enter 1 for FileIO and Searching, 2 for Sorting and Recursion, and 3 for Enum and FileIO");
+        System.out.println("Enter 1 for FileIO and Searching, 2 for Sorting and Recursion, 3 for Enum and FileIO and 4 for the bonus program.");
         System.out.println("There is no error handling for only this class as it serves only as a directory to the actual"
                 + " files and is not being marked");
         Scanner sc = new Scanner(System.in);

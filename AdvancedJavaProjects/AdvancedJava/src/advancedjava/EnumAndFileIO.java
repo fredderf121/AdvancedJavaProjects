@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * A program that tracks the fish you have.
  */
 package advancedjava;
 
@@ -16,7 +14,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Emperor Master Chen
+ * @author Fred Chen
  */
 public class EnumAndFileIO {
 
@@ -28,12 +26,13 @@ public class EnumAndFileIO {
         PIKE,
         BASS,
         PERCH,
-        COD
+        TROUT,
+        COD;
     }
     
     private static void WriteToFile(ArrayList<Fish> list, String path) throws IOException {
-        ArrayList<String> newList = new ArrayList<String>();
-        list.forEach((i) -> newList.add(i.name()));
+        ArrayList<String> newList = new ArrayList<>();
+        list.forEach((i) -> newList.add(i.name()));//convert the list of enum fish to string so that it can be written to file
         Path file = Paths.get(path);
         Files.write(file, newList, StandardCharsets.UTF_8);
         
@@ -41,18 +40,18 @@ public class EnumAndFileIO {
     
     public static void run() throws IOException {
         
-        File f = new File("fish.txt");
+        File f = new File("files/fish.txt");
         if (!f.exists()) {
             f.createNewFile();
         }
         
-        Scanner s = new Scanner(f);
-        
-        ArrayList<Fish> names = new ArrayList<>();
-        while (s.hasNext()) {
-            names.add((Fish.valueOf(s.next())));
+        ArrayList<Fish> names;
+        try (Scanner s = new Scanner(f)) {
+            names = new ArrayList<>();
+            while (s.hasNext()) {
+                names.add((Fish.valueOf(s.next())));
+            }
         }
-        s.close();
         
         
         
@@ -69,12 +68,14 @@ public class EnumAndFileIO {
                     System.out.println("Please enter in the fish you have caught! Please write the fish in all caps.");
                     try {
                         names.add((Fish.valueOf(sc.next())));
-                        WriteToFile(names, "fish.txt");
+                        System.out.println("Fish added!\n\n");
+                        WriteToFile(names, "files/fish.txt");
                     } catch (IllegalArgumentException e) {
                         System.out.println("Not a fish in our database! Remember to write in all caps!");
                     }
                     break;
                 case "list":
+                    System.out.println("Here is your list\n");
                     names.forEach((i) -> System.out.println(i.name()));
                     break;
                 default:

@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *Quicksort algorithm with arraylists and recursion
  */
 package advancedjava;
 
@@ -11,36 +9,36 @@ import java.util.Collections;
 
 /**
  *
- * @author S332896109
+ * @author Fred Chen
  */
 public class SortingAndRecursion {
-    
+
     public static int partition(ArrayList<Integer> list, int min, int max) {
+        //We choose the last number as the partition point and we rearrange the list so that
+        //those less than it are placed left and those greater are placed right of it
         int center = list.get(max);
-        int i = (min - 1); 
-        for (int j = min; j < max; j++) {           
+        int i = (min - 1);
+        for (int j = min; j < max; j++) {
             if (list.get(j) < center) {
-                i++;       
+                i++;
                 Collections.swap(list, i, j);
             }
         }
-        Collections.swap(list, i+1, max);       
+        Collections.swap(list, i + 1, max);
 
-        return i + 1;
+        return i + 1;//the location of the pivot point in the sorted array
     }
 
-   
-    
-    public static ArrayList<Integer> quickSort(ArrayList<Integer> list, int low, int high){
-    
-        if (low < high) {
-         
-            int pi = partition(list, low, high);
+    public static ArrayList<Integer> quickSort(ArrayList<Integer> list, int low, int high) {
 
-            quickSort(list, low, pi - 1);
-            quickSort(list, pi + 1, high);
+        if (low < high) {
+
+            int pi = partition(list, low, high);//find the location of the pivot point in the final array
+
+            quickSort(list, low, pi - 1);//quicksort the lower half
+            quickSort(list, pi + 1, high);//quicksort the upper half (both will recursively sort the smaller and smaller groups)
         }
-        return list;
+        return list;//The list is sorted!
     }
 
     /**
@@ -54,7 +52,7 @@ public class SortingAndRecursion {
             String num = sc.nextLine();
             try {
                 numList.add(Integer.parseInt(num));
-                
+
             } catch (NumberFormatException e) {
                 if (num.equals("exit")) {
                     break;
@@ -65,8 +63,10 @@ public class SortingAndRecursion {
             }
         }
         System.out.println("The sorted list is as follows");
-        quickSort(numList, 0, numList.size()-1).forEach(
-                (i) -> {System.out.println(i);}
+        quickSort(numList, 0, numList.size() - 1).forEach(//Lambda to print out sorted list on same line as quicksort being called
+                (i) -> {
+                    System.out.println(i);
+                }
         );
     }
 

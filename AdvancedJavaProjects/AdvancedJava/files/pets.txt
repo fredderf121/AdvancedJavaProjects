@@ -1,0 +1,14 @@
+DOG,tommy,345.0,45.6
+REPTILE,f,45.0,3334.0
+DOG,atommy,3.0,145.6
+DOG,btommy,5.0,345.6
+DOG,ctommy,3.45355345E8,545.6
+DOG,dtommy,6.0,845.6
+DOG,ztommy,55.0,645.6
+DOG,ftommy,4.0,45.6
+DOG,ftommy,7.0,145.6
+DOG,gtommy,3.0,145.6
+DOG,htommy,3.0,145.6
+REPTILE,f,45.0,3334.0
+CAT, f,0.34,3.0
+DOG,aaaaa,0.0,0.0

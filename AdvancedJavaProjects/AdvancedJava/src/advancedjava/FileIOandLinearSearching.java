@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * One can read and write names to a file, as well as search for them.
  */
 package advancedjava;
 
@@ -21,7 +19,7 @@ import java.util.ArrayList;
  */
 public class FileIOandLinearSearching {
 
-    private static boolean LinearSearch(ArrayList<String> list, String keyword) {
+    private static boolean LinearSearch(ArrayList<String> list, String keyword) {//Runs through each item one by one
         for (String i : list) {
             if (i.equals(keyword)) {
                 return true;
@@ -31,25 +29,25 @@ public class FileIOandLinearSearching {
     }
 
     private static void WriteToFile(ArrayList<String> list) throws IOException {
-        Path file = Paths.get("file.txt");
+        Path file = Paths.get("files/file.txt");
         Files.write(file, list, StandardCharsets.UTF_8);
 
     }
 
     public static void run() throws IOException {
 
-        File f = new File("file.txt");
+        File f = new File("files/file.txt");
         if (!f.exists()) {
-            f.createNewFile();
+            f.createNewFile();//Bulletproofing so file is created if doesnt exist
         }
 
-        Scanner s = new Scanner(f);
-
-        ArrayList<String> names = new ArrayList<>();
-        while (s.hasNext()) {
-            names.add(s.next());
+        ArrayList<String> names;
+        try (Scanner s = new Scanner(f)) {
+            names = new ArrayList<>();
+            while (s.hasNext()) {
+                names.add(s.next());//Create a list from file; one line is one item
+            }
         }
-        s.close();
 
         Scanner input = new Scanner(System.in);
         loop:
@@ -75,8 +73,9 @@ public class FileIOandLinearSearching {
                         System.out.println("Name added!");
 
                     } else {
-                        System.out.println("This name already exists!");
+                        System.out.println("This name already exists!");//Name can only be added once
                     }
+                    break;
                 default:
                     break loop;
             }
